@@ -1,0 +1,105 @@
+#title-bar {
+    -webkit-app-region: drag;
+    height: 55px;
+    text-align: center;
+    line-height: 40px;
+    position: relative;
+    z-index: 999;
+    vertical-align: middle;
+    background-color: #444;
+    padding: none;
+    margin: 0px;
+}
+#title {
+    position: fixed;
+    top: 0px;
+    left: 6px;
+    color: white;
+}
+#title-bar-btns {
+    -webkit-app-region: no-drag;
+    position: fixed;
+    z-index: 1000;
+    top: 0px;
+    right: 6px;
+}
+.buttons {
+    padding-right: 9px;
+    padding-top: 10px;
+    float: left;
+    line-height: 0px;
+}
+.buttons:hover a {
+    visibility: visible;
+}
+a:hover {
+    text-decoration: none;
+}
+.close {
+    background: #ff5c5c;
+    font-size: 9pt;
+    line-height: 11px;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #e33e41;
+    border-radius: 50%;
+    display: inline-block;
+}
+.close:active {
+    background: #c14645;
+    border: 1px solid #b03537;
+}
+.close:active .closebutton {
+    color: #4e0002;
+}
+.closebutton {
+    color: #820005;
+    visibility: hidden;
+    cursor: default;
+}
+.minimize {
+    background: #ffbd4c;
+    line-height: 11px;
+    font-size: 9pt;
+    margin-left: 4px;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #e09e3e;
+    border-radius: 50%;
+    display: inline-block;
+}
+.minimize:active {
+    background: #c08e38;
+    border: 1px solid #af7c33;
+}
+.minimize:active .minimizebutton {
+    color: #5a2607;
+}
+.minimizebutton {
+    color: #9a5518;
+    visibility: hidden;
+    cursor: default;
+}
+.zoom {
+    background: #00ca56;
+    font-size: 9pt;
+    line-height: 11px;
+    margin-left: 6px;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #14ae46;
+    border-radius: 50%;
+    display: inline-block;
+}
+.zoom:active {
+    background: #029740;
+    border: 1px solid #128435;
+}
+.zoom:active .zoombutton {
+    color: #003107;
+}
+.zoombutton {
+    color: #006519;
+    visibility: hidden;
+    cursor: default;
+}

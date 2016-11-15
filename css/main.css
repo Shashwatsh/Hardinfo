@@ -1,0 +1,8 @@
+body {
+    background-color: #444;
+}
+.main-info {
+    border: 3px dotted #c3c3c3;
+    border-radius: 4px;
+    padding: 8px;
+}
