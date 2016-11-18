@@ -1,5 +1,5 @@
 {
-  "name": "Simple your hardinfo",
+  "name": "hardinfo",
   "version": "0.0.0",
   "description": "",
   "main": "main.js",
@@ -7,12 +7,14 @@
     "start": "electron ."
   },
   "keywords": [
-    "Electron",
+    "Electron"
   ],
   "devDependencies": {
     "electron": "^1.4.1"
   },
   "dependencies": {
     "systeminformation": "^3.10.2",
+    "jquery": "^3.1.1",
+    "pbin-guest": "^0.0.6"
   }
 }
