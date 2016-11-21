@@ -4,10 +4,8 @@
 (function(){
     window.$ = window.jQuery = require('jquery');
 
-    // const {BrowserWindow} = require('electron').remote
-    // si.cpu()
-    //     .then(data => $('#cpu').text(data.brand))
-    //     .catch(error => console.error(error));
+    const {BrowserWindow} = require('electron').remote
+
     function init() {
         // Minimize task
         document.getElementById("min-btn").addEventListener("click", (e) => {
@@ -27,9 +25,17 @@
 
             ipcRenderer = require('electron').ipcRenderer
 
-            ipcRenderer.send('generate_info', '')
-            ipcRenderer.once('generate_info', function(event, arg){
-                console.log(arg)
+            $('#get_info').click(function(){
+                var element = $(this);
+                $(element).hide();
+                $('#loader-action').show();
+                ipcRenderer.send('generate_info', '')
+                ipcRenderer.once('generate_info', function(event, arg){
+                    $('.result').html().show();
+                    $('#loader-action').hide();
+                    $(element).show();
+                    // $('.result').append('<a href="'arg.res'">')
+                })
             })
         }
     };

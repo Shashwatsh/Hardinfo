@@ -15,6 +15,6 @@
   "dependencies": {
     "systeminformation": "^3.10.2",
     "jquery": "^3.1.1",
-    "pbin-guest": "^0.0.6"
+    "teknik-paste": "^0.0.1"
   }
 }

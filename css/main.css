@@ -1,8 +1,77 @@
+@font-face {
+    font-family: 'quicksanddash';
+    src: url('../fonts/quicksand_dash-webfont.woff2') format('woff2'),
+         url('../fonts/quicksand_dash-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'quicksandlight';
+    src: url('../fonts/quicksand-light-webfont.woff2') format('woff2'),
+         url('../fonts/quicksand-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'quicksandregular';
+    src: url('../fonts/quicksand-regular-webfont.woff2') format('woff2'),
+         url('../fonts/quicksand-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
-    background-color: #444;
+    background: url('../img/b12.png') repeat;
 }
 .main-info {
-    border: 3px dotted #c3c3c3;
-    border-radius: 4px;
-    padding: 8px;
+    text-align: center;
+    margin-top: 120px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.main-info h3 {
+	font-family: 'quicksanddash';
+	color: white;
+} 
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button
+{
+	position: relative;
+	padding: 10px 40px;
+  	margin: 0px 10px 10px 0px;
+	border-radius: 10px;
+	float: left;
+	font-family: 'quicksandregular';
+	font-size: 25px;
+	color: #FFF;
+	text-decoration: none;	
+}
+
+.blue
+{
+	background-color: #3498DB;
+	border-bottom: 5px solid #2980B9;
+	text-shadow: 0px -2px #2980B9;
+}
+
+.action-button:active
+{
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid #3498DB;
+}
+.fa-li {
+	position: inherit;
+}
+
+#loader {
+	display: none;
+}
+.result {
+	display: none;
 }

@@ -1,20 +1,30 @@
+@font-face {
+    font-family: 'quicksandregular';
+    src: url('../fonts/quicksand-regular-webfont.woff2') format('woff2'),
+         url('../fonts/quicksand-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 #title-bar {
     -webkit-app-region: drag;
     height: 55px;
-    text-align: center;
+    text-align: center;     
     line-height: 40px;
     position: relative;
     z-index: 999;
     vertical-align: middle;
-    background-color: #444;
+    background: url('../img/b12.png') repeat;
     padding: none;
     margin: 0px;
 }
 #title {
+    font-family: 'quicksandregular';
     position: fixed;
-    top: 0px;
-    left: 6px;
+    top: 8px;
+    z-index: 1000;
+    left: 15px;
     color: white;
+    font-size: 12px;
 }
 #title-bar-btns {
     -webkit-app-region: no-drag;

@@ -8,7 +8,7 @@ const ipcMain = electron.ipcMain
 // system info lib
 const si = require('systeminformation')
 // lib for paste to pastebin 
-const paste = require('pbin-guest')
+const paste = require('teknik-paste')
 
 const path = require('path')
 const url = require('url')
@@ -17,114 +17,162 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+function generator_list(cb) {
+  var output = '';
+  // start generate list 
+  get_batteryinfo()
+    .then(battery => {
+      output += battery+'\r';
+      return output
+    })
+    .then(get_graphicsinfo)
+    .then(video => {
+      output += video+'\r'
+      return output
+    })
+    .then(get_system)
+    .then(system => {
+      output += system+'\r'
+      return output
+    })
+    .then(get_mem)
+    .then(mem => {
+      output += mem+'\r'
+      return output
+    })
+    .then(get_osinfo)
+    .then(osinfo => {
+      output += osinfo+'\r'
+      return output
+    })
+    .then(get_cpu)
+    .then(cpu => {
+      output += cpu+'\r'
+      return output
+    })
+    .then(output => {
+      paste.paste({title: 'test', code: output}, (res, err) => {
+        if(err) {
+          return cb(null, err)
+        }
+        return cb(res, null)
+      })
+    })
+}
 
 ipcMain.on('generate_info', function(event, args){
-  var output = '';
-
-  get_graphicsinfo()
-    .then(function(res){
-      console.log(res)
-    })
-    .then(function(res){
-      console.log(res)
-    })
-  
-
-  // .then(function(){
-  //   get_batteryinfo(function(err, res){
-  //     if(!err) {
-  //       list_info += '--- Battery info ---\n\r';
-  //       Object.keys(res).forEach(function(key) {
-  //         list_info += key+': '+res[key]+'\n\r';
-  //       });
-  //       return;
-  //     }
-  //   })
-  // }, function handleError(err){
-  //   console.error(err)
-  // })
-
-  // console.log(list_info)
-
-  // var graphics = new Promise(function(resolve, reject) {
-    
-  // })
-
- 
-  // graphics.then(function(val){
-  //   console.log(val)
-  // })
-  // battery.then(function(val){
-  //   console.log(val)
-  // })
-
-
-  // get main info device
-  si.system(function(res, err){
-    hardinfo = {
-      manufacturer: res.manufacturer,
-      model: res.model,
-      serial: res.serial,
-      uuid: res.uuid
+  generator_list((res, err) => {
+    if(err) {
+      event.sender.send('generate_info', {
+        error: 1,
+        message: err
+      });
+      return;
     }
+    event.sender.send('generate_info', {
+      error: 0,
+      message: res
+    });
+    return;
   });
-  // get main info OS
-  si.osInfo(function(res, err){
-    if(err) {
-      event.sender.send('generate_info', {
-        err: err,
-        res: null
-      })
-      return;
-    }
-    platforminfo = {
-      platform: res.platform,
-      distro: res.distro,
-      release: res.release,
-      uuid: res.uuid,
-      codename: (process.platform === 'darwin' ? res.codename : ''),
-      kernel: res.kernel,
-      arch: res.arch,
-      hostname: res.hostname,
-      logofile: res.logofile
-    }
-  })
-  // get main info cpu
-  si.cpu(function(res, err){
-    if(err) {
-      event.sender.send('generate_info', {
-        err: err,
-        res: null
-      })
-      return;
-    }
-    cpuinfo = {
-      manufacturer: res.manufacturer,
-      brand: res.brand,
-      speed_core: res.speed,
-      cores_count: res.cores
-    }
-  })
-  // get main info memory
-  si.mem(function(res, err){
-    if(err) {
-      event.sender.send('generate_info', {
-        err: err,
-        res: null
-      })
-      return;
-    }
-    meminfo = {
-      total_memory: res.total,
-      swaptotal: res.swaptotal
-    }
-    
-    
-  })
 });
 
+function get_cpu() {
+  return new Promise((resolve, reject) => {
+    // get main info cpu
+    si.cpu(function(res, err){
+      if(err) {
+        reject(err)
+      }
+
+      cpuinfo = new Array();
+      cpuinfo['manufacturer'] = res.manufacturer;
+      cpuinfo['brand'] = res.brand;
+      cpuinfo['speed_coree'] = res.speed;
+      cpuinfo['cores_count'] = res.cores;
+    
+      list_info = '--- CPU info ---\n';
+      Object.keys(cpuinfo).forEach(function(key) {
+        list_info += key+': '+cpuinfo[key]+'\n';
+      });
+      resolve(list_info)
+    })
+  })
+}
+
+function get_osinfo() {
+  return new Promise((resolve, reject) => {
+    // get main info OS
+    si.osInfo(function(res, err){
+      if(err) {
+        reject(err)
+      }
+
+      osinfo = new Array();
+      osinfo['platform'] = res.platform;
+      osinfo['distro'] = res.distro;
+      osinfo['release'] = res.release;
+      osinfo['codename'] = (process.platform === 'darwin' ? '-' : res.codename);
+      osinfo['kernel'] = res.kernel;
+      osinfo['arch'] = res.arch;
+      osinfo['hostname'] = res.hostname;
+      osinfo['logofile'] = res.logofile;
+    
+      list_info = '--- OS info ---\n';
+      Object.keys(osinfo).forEach(function(key) {
+        list_info += key+': '+osinfo[key]+'\n';
+      });
+      resolve(list_info)
+    })
+  })
+}
+
+function get_mem() {
+  return new Promise((resolve, reject) => {
+    // get main info memory
+    si.mem(function(res, err){
+      if(err) {
+        reject(err)
+      }
+
+      meminfo = new Array();
+      meminfo['total_memory'] = formatBytes(res.total);
+      meminfo['swaptotal'] = formatBytes(res.swaptotal);
+      
+      list_info = '--- Memory info ---\n';
+      Object.keys(meminfo).forEach(function(key) {
+        list_info += key+': '+meminfo[key]+'\n';
+      });
+      resolve(list_info)
+    })
+  })
+}
+ 
+function get_system() {
+  return new Promise((resolve, reject) => {
+    // get main info device
+    si.system(function(res, err){
+      if(err) {
+        reject(err)
+      }
+
+      systeminfo = new Array();
+      systeminfo['manufacturer'] = res.manufacturer;
+      systeminfo['model'] = res.model;
+      systeminfo['serial'] = res.serial;
+      systeminfo['uuid'] = res.uuid;
+
+      list_info = '--- System info ---\n';
+      Object.keys(systeminfo).forEach(function(key) {
+        list_info += key+': '+systeminfo[key]+'\n';
+      });
+      resolve(list_info)
+    });
+  })
+}
+
 function get_batteryinfo() {
-  const _i = new Promise(function(resolve, reject){
+  return new Promise((resolve, reject) => {
     // get main info battery
     si.battery(function(res, err){
       if(err) {
@@ -136,45 +184,18 @@ function get_batteryinfo() {
       batteryinfo['maxcapacity'] = res.maxcapacity;
 
       
-      list_info = '--- Battery info ---\n\r';
+      list_info = '--- Battery info ---\n';
       Object.keys(batteryinfo).forEach(function(key) {
-        list_info += key+': '+batteryinfo[key]+'\n\r';
-      });
-      resolve(list_info)
-    })
-  }).then(function(resolve, reject){
-    si.graphics(function(res, err){
-      if(err) {
-        reject(reject)
-      }
-
-      graphicsinfo = new Array();
-
-      graphicsinfo['model'] = res.controllers[0].model;
-      graphicsinfo['vendor'] = res.controllers[0].vendor;
-      graphicsinfo['videoram'] = res.controllers[0].vram;
-      graphicsinfo['display_model'] = res.displays[0].model;
-      graphicsinfo['display_connection'] = res.displays[0].connection;
-      graphicsinfo['resolutionx'] = res.displays[0].resolutionx;
-      graphicsinfo['resolutiony'] = res.displays[0].resolutiony;
-      // graphicsinfo['depth'] = res.displays[0].depth;
-
-
-      list_info = '--- Graphics info ---\n\r';
-      Object.keys(graphicsinfo).forEach(function(key) {
-        list_info += key+': '+graphicsinfo[key]+'\n\r';
+        list_info += key+': '+batteryinfo[key]+'\n';
       });
       resolve(list_info)
     })
   })
-  return _i;
 }
 
-const resolve = console.log, 
-      reject  = console.log;
 
 function get_graphicsinfo() {
-  const _i = new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     si.graphics(function(res, err){
       if(err) {
         reject(reject)
@@ -184,7 +205,7 @@ function get_graphicsinfo() {
 
       graphicsinfo['model'] = res.controllers[0].model;
       graphicsinfo['vendor'] = res.controllers[0].vendor;
-      graphicsinfo['videoram'] = res.controllers[0].vram;
+      graphicsinfo['videoram'] = res.controllers[0].vram+' MB';
       graphicsinfo['display_model'] = res.displays[0].model;
       graphicsinfo['display_connection'] = res.displays[0].connection;
       graphicsinfo['resolutionx'] = res.displays[0].resolutionx;
@@ -192,14 +213,22 @@ function get_graphicsinfo() {
       // graphicsinfo['depth'] = res.displays[0].depth;
 
 
-      list_info = '--- Graphics info ---\n\r';
+      list_info = '--- Graphics info ---\n';
       Object.keys(graphicsinfo).forEach(function(key) {
-        list_info += key+': '+graphicsinfo[key]+'\n\r';
+        list_info += key+': '+graphicsinfo[key]+'\n';
       });
       resolve(list_info)
     })
   })
-  return _i;
+}
+
+function formatBytes(bytes,decimals) {
+   if(bytes == 0) return '0 Byte';
+   var k = 1000;
+   var dm = decimals + 1 || 3;
+   var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+   var i = Math.floor(Math.log(bytes) / Math.log(k));
+   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
 function createWindow () {
