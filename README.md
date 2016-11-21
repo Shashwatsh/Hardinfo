@@ -9,6 +9,9 @@ app for collection info about your hardware and paste to online. Example paste w
 ### Support OS
 At now are supported mac os/osx and linux. 
 
+### Download
+For macOS - [download app](https://github.com/foozzi/Hardinfo/releases/download/0.0.1/Hardinfo.app.zip)
+
 ### Build for dev
 ```sh
 electron-packager ./ --icon=./img/icon.icns --overwrite
