@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang=ru>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hardinfo was released (alpha)features:
+support macOS/Linux
+list nearly all hardware info 
+detect battery (if laptop)
+list posted to teknik paste
+generate list less than ~3sec.
+other functions they wil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hardinfo released (alpha)">
+<meta property="og:url" content="https://foozzi.github.io/2016/11/22/Hardinfo-released-alpha-1/index.html">
+<meta property="og:site_name" content="Hardinfo">
+<meta property="og:description" content="Hardinfo was released (alpha)features:
+support macOS/Linux
+list nearly all hardware info 
+detect battery (if laptop)
+list posted to teknik paste
+generate list less than ~3sec.
+other functions they wil">
+<meta property="og:updated_time" content="2016-11-22T15:20:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hardinfo released (alpha)">
+<meta name="twitter:description" content="Hardinfo was released (alpha)features:
+support macOS/Linux
+list nearly all hardware info 
+detect battery (if laptop)
+list posted to teknik paste
+generate list less than ~3sec.
+other functions they wil">
+    
+    
+    <!-- title -->
+    <title>Hardinfo released (alpha)</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/Hardinfo/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Hardinfo/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/Hardinfo/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/Hardinfo/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/Hardinfo/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/Hardinfo/">Home</a></li>
+         
+          <li><a href="/Hardinfo/about/">About</a></li>
+         
+          <li><a href="/Hardinfo/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <ul>
+        
+        <li><a class="icon" href="/Hardinfo/2016/11/22/Hardinfo-released-alpha-2/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/Hardinfo/2016/11/22/Hardinfo-released-alpha/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+        <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://twitter.com/share?url=https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/&text=Hardinfo released (alpha)"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/&title=Hardinfo released (alpha)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/&is_video=false&description=Hardinfo released (alpha)"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="mailto:?subject=Hardinfo released (alpha)&body=Check out this article: https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://getpocket.com/save?url=https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/&title=Hardinfo released (alpha)"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://reddit.com/submit?url=https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/&title=Hardinfo released (alpha)"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/&title=Hardinfo released (alpha)"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://digg.com/submit?url=https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/&title=Hardinfo released (alpha)"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://foozzi.github.io/Hardinfo/2016/11/22/Hardinfo-released-alpha-1/&name=Hardinfo released (alpha)&description="><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hardinfo-was-released-alpha"><span class="toc-number">1.</span> <span class="toc-text">Hardinfo was released (alpha)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#features"><span class="toc-number">1.1.</span> <span class="toc-text">features:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-and-build"><span class="toc-number">1.2.</span> <span class="toc-text">install and build</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Hardinfo released (alpha)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hardinfo</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-11-22T15:20:48.000Z" itemprop="datePublished">2016-11-22</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/Hardinfo/tags/alpha/">alpha</a>, <a class="tag-link" href="/Hardinfo/tags/hardinfo/">hardinfo</a>, <a class="tag-link" href="/Hardinfo/tags/hardware/">hardware</a>, <a class="tag-link" href="/Hardinfo/tags/released/">released</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Hardinfo-was-released-alpha"><a href="#Hardinfo-was-released-alpha" class="headerlink" title="Hardinfo was released (alpha)"></a>Hardinfo was released (alpha)</h2><h3 id="features"><a href="#features" class="headerlink" title="features:"></a>features:</h3><ul>
+<li>support macOS/Linux</li>
+<li>list nearly all hardware info </li>
+<li>detect battery (if laptop)</li>
+<li>list posted to <a href="https://paste.teknik.io" target="_blank" rel="external">teknik paste</a></li>
+<li>generate list less than ~3sec.</li>
+<li>other functions they will be implemented later</li>
+</ul>
+<h3 id="install-and-build"><a href="#install-and-build" class="headerlink" title="install and build"></a>install and build</h3><p>Install build <a href="https://github.com/foozzi/Hardinfo/blob/master/README.md" target="_blank" rel="external">link</a> or build it self with <a href="https://www.npmjs.com/package/electron-packager" target="_blank" rel="external">electron-packager</a> - <a href="https://github.com/foozzi/Hardinfo/blob/master/README.md" target="_blank" rel="external">link</a></p>
+
+  </div>
+</article>
+
+
+
+      </div>
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2016 Hardinfo
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/Hardinfo/">Home</a></li>
+         
+          <li><a href="/Hardinfo/about/">About</a></li>
+         
+          <li><a href="/Hardinfo/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/Hardinfo/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/Hardinfo/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
