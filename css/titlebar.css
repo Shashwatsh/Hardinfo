@@ -55,6 +55,9 @@ a:hover {
     border-radius: 50%;
     display: inline-block;
 }
+.close:hover {
+    opacity: 0.6;
+}
 .close:active {
     background: #c14645;
     border: 1px solid #b03537;
@@ -77,6 +80,9 @@ a:hover {
     border: 1px solid #e09e3e;
     border-radius: 50%;
     display: inline-block;
+}
+.minimize:hover {
+    opacity: 0.6;
 }
 .minimize:active {
     background: #c08e38;

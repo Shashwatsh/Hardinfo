@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/main.css">
     <meta charset="UTF-8">
-    <div id="title">Hardinfo - get and paste your hardware info</div>
+    <div id="title" class="noselect">Hardinfo - get and paste your hardware info</div>
     <div id="title-bar">
         <div id="title-bar-btns">
             <div class="buttons">
@@ -21,7 +21,7 @@
         </div>
     </div>
   </head>
-  <a href="https://github.com/foozzi/Hardinfo" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="    fill: #fff;
+  <a href="#!" id="https://github.com/foozzi/Hardinfo" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="    fill: #fff;
     color: #151513;
     position: absolute;
     bottom: 0;
@@ -31,13 +31,21 @@
 
   <body>
       <div class="main-info">
-          <h3>Generate you hardware list:</h3>
+          <h3 class="noselect" style="cursor: default;">Generate you hardware list:</h3>
           <span id="loader-action">
-            <a href="#!" id="get_info" class="action-button shadow animate blue">Generate</a>
-            <i style="color:white;" id="loader" class="fa-li fa fa-spinner fa-spin"></i>
+            <a href="#!" id="get_info" class="action-button shadow animate blue noselect">Generate</a>
+            <div class="cssload-thecube" id="loader">
+              <div class="cssload-cube cssload-c1"></div>
+              <div class="cssload-cube cssload-c2"></div>
+              <div class="cssload-cube cssload-c4"></div>
+              <div class="cssload-cube cssload-c3"></div>
+            </div>
           </span>
           <div class="result">
             
+          </div>
+          <div class="inform">
+            <a class="inform-link noselect" href="#!">v. 0.0.1</a>
           </div>
       </div>
   </body>

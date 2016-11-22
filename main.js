@@ -7,7 +7,7 @@ const BrowserWindow = electron.BrowserWindow
 const ipcMain = electron.ipcMain
 // system info lib
 const si = require('systeminformation')
-// lib for paste to pastebin 
+// lib for paste to teknik 
 const paste = require('teknik-paste')
 
 const path = require('path')
@@ -51,7 +51,7 @@ function generator_list(cb) {
       return output
     })
     .then(output => {
-      paste.paste({title: 'test', code: output}, (res, err) => {
+      paste.paste({title: 'Hardinfo - get and paste your hardware info (https://github.com/foozzi/Hardinfo)', code: output}, (res, err) => {
         if(err) {
           return cb(null, err)
         }
@@ -249,7 +249,7 @@ function createWindow () {
   }))
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

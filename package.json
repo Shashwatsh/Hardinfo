@@ -10,11 +10,13 @@
     "Electron"
   ],
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^1.4.1",
+    "electron-builder": "^8.6.0"
   },
   "dependencies": {
     "systeminformation": "^3.10.2",
     "jquery": "^3.1.1",
-    "teknik-paste": "^0.0.1"
+    "teknik-paste": "^0.0.1",
+    "open": "^0.0.5"
   }
 }

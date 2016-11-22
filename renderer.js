@@ -26,16 +26,25 @@
             ipcRenderer = require('electron').ipcRenderer
 
             $('#get_info').click(function(){
+                $('.result').html('');
                 var element = $(this);
                 $(element).hide();
-                $('#loader-action').show();
+                $('#loader').show();
                 ipcRenderer.send('generate_info', '')
                 ipcRenderer.once('generate_info', function(event, arg){
-                    $('.result').html().show();
-                    $('#loader-action').hide();
+                    $('.result').show();
+                    $('#loader').hide();
                     $(element).show();
-                    // $('.result').append('<a href="'arg.res'">')
+                    $('.result').append('<a class="link-info" href="#!" id="'+arg.message+'">>> Go to link <<</a>');
+                    $('.link-info').click(function(){
+                        var open = require("open");
+                        open($(this).attr('id'));
+                    })
                 })
+            });
+            $('.github-corner').click(function(){
+                var open = require("open");
+                open($(this).attr('id'));
             })
         }
     };
