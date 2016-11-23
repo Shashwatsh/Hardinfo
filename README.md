@@ -4,7 +4,7 @@
 
 ## Overview
 
-app for collection info about your hardware and paste to online. Example paste with info - [go to link](https://paste.teknik.io/JDUPy)
+Collect and share information about your computer's hardware. Example paste with info - [go to link](https://paste.teknik.io/JDUPy)
 
 ### Support OS
 At now are supported mac os/osx and linux. 
