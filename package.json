@@ -1,6 +1,6 @@
 {
   "name": "Hardinfo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collect and share information about your computer's hardware. Example paste with info - https://paste.teknik.io/JDUPy",
   "main": "main.js",
   "scripts": {
