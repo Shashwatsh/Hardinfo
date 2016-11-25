@@ -162,7 +162,7 @@ function get_system() {
             systeminfo = new Array();
             systeminfo['manufacturer'] = res.manufacturer;
             systeminfo['model'] = res.model;
-            systeminfo['serial'] = res.serial;
+            systeminfo['serial'] = (res.serial === 'XXXXXXXXXXXXXXXX' ? 'This is hackintosh.' : res.serial);
             systeminfo['uuid'] = res.uuid;
 
             list_info = '--- System info ---\n';
@@ -183,9 +183,12 @@ function get_batteryinfo() {
             }
             batteryinfo = new Array();
 
-            batteryinfo['hasbattery'] = res.hasbattery;
-            batteryinfo['maxcapacity'] = res.maxcapacity;
-
+            if(res.hasbattery) {
+                batteryinfo['hasbattery'] = res.hasbattery;
+                batteryinfo['maxcapacity'] = res.maxcapacity;
+            } else {
+                batteryinfo['hasbattery'] = 'Device has no battery';
+            }
 
             list_info = '--- Battery info ---\n';
             Object.keys(batteryinfo).forEach(function(key) {
@@ -209,8 +212,8 @@ function get_graphicsinfo() {
             graphicsinfo['model'] = res.controllers[0].model;
             graphicsinfo['vendor'] = res.controllers[0].vendor;
             graphicsinfo['videoram'] = res.controllers[0].vram + ' MB';
-            graphicsinfo['display_model'] = res.displays[0].model;
-            graphicsinfo['display_connection'] = res.displays[0].connection;
+            graphicsinfo['display_model'] = (res.displays[0].model === 'Display' ? 'This is laptop' : res.displays[0].model);
+            graphicsinfo['display_connection'] = (res.displays[0].connection === '' ? 'This is laptop' : res.displays[0].connection);
             graphicsinfo['resolutionx'] = res.displays[0].resolutionx;
             graphicsinfo['resolutiony'] = res.displays[0].resolutiony;
             // graphicsinfo['depth'] = res.displays[0].depth;
